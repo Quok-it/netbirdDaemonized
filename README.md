@@ -1,4 +1,4 @@
-#Install script to set up netbird
+Install script to set up netbird
 
 How to use:
 
