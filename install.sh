@@ -19,8 +19,7 @@ fi
 
 SETUP_KEY="$1"
 
-#MANAGEMENT_URL="TODO.quok.it"
-#AUTH_TOKEN="TODO.FROM.VAULT"
+MANAGEMENT_URL="https://netbird.quok.it"
 
 # ------------------------------------------------------------------------------
 # 3. Ensure required tools are installed.
@@ -39,7 +38,6 @@ snap install netbird
 # ------------------------------------------------------------------------------
 
 # for self hosted
-# netbird login --management-url=${MANAGEMENT_URL} --auth-token=${AUTH_TOKEN}
 
 echo "Starting Netbird daemon"
 
@@ -49,7 +47,7 @@ netbird service start
 
 echo "configuring Netbird"
 
-netbird up --setup-key=${SETUP_KEY}
+netbird login --setup-key=${SETUP_KEY} --management-url=${MANAGEMENT_URL}
 
 # ------------------------------------------------------------------------------
 # 6. Make sure installation went smoothly
