@@ -55,3 +55,8 @@ netbird login --setup-key=${SETUP_KEY} --management-url=${MANAGEMENT_URL}
 
 snap services netbird
 
+# ------------------------------------------------------------------------------
+# 7. Start netbird
+# ------------------------------------------------------------------------------
+
+netbird up
