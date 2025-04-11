@@ -39,22 +39,34 @@ curl -fsSL https://pkgs.netbird.io/install.sh | sh
 
 echo "Starting Netbird daemon"
 
-netbird service install
+if ! netbird service install; then
+  log_error "Failed to install Netbird service."
+fi
 
-netbird service start
+if ! netbird service start; then
+  log_error "Failed to start Netbird service."
+fi
 
-echo "configuring Netbird"
+echo "Configuring Netbird"
 
-netbird login --setup-key=${SETUP_KEY} --management-url=${MANAGEMENT_URL}
+if ! netbird login --setup-key="${SETUP_KEY}" --management-url="${MANAGEMENT_URL}"; then
+  log_error "Netbird login failed."
+fi
 
 # ------------------------------------------------------------------------------
 # 6. Make sure installation went smoothly
 # ------------------------------------------------------------------------------
 
-snap services netbird
+if ! snap services netbird; then
+  log_error "Snap service check for Netbird failed."
+fi
 
 # ------------------------------------------------------------------------------
-# 7. Start netbird
+# 7. Start Netbird
 # ------------------------------------------------------------------------------
 
-netbird up
+if ! netbird up; then
+  log_error "Failed to bring Netbird up."
+fi
+
+echo "Script execution completed."
