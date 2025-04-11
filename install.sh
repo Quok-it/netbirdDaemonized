@@ -3,8 +3,6 @@
 # creates a dedicated system user, installs a systemd service,
 # enables it to start on boot, and then starts the Nomad agent.
 
-set -e
-
 # ------------------------------------------------------------------------------
 # 1. Check for root privileges.
 # ------------------------------------------------------------------------------
