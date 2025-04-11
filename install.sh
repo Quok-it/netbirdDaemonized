@@ -31,7 +31,7 @@ apt install -y snapd
 # 4. install netbird
 # ------------------------------------------------------------------------------
 
-snap install netbird
+curl -fsSL https://pkgs.netbird.io/install.sh | sh
 
 # ------------------------------------------------------------------------------
 # 5. Set up netbird
