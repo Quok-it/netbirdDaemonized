@@ -27,6 +27,4 @@ rm -rf /var/lib/netbird
 
 rm -rf /etc/netbird
 
-rm -rf /var/snap/netbird
-
-sudo snap remove --purge netbird
+sudo apt remove netbird
