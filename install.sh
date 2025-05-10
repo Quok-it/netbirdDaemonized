@@ -46,20 +46,16 @@ fi
 if ! netbird service start; then
   log_error "Failed to start Netbird service."
 fi
+# ------------------------------------------------------------------------------
+# 6. Connect to management server
+# ------------------------------------------------------------------------------
 
 echo "Configuring Netbird"
 
-if ! netbird login --setup-key="${SETUP_KEY}" --management-url="${MANAGEMENT_URL}"; then
+if ! netbird up --setup-key="${SETUP_KEY}" --management-url="${MANAGEMENT_URL}" --admin-url="${MANAGEMENT_URL}"; then
   log_error "Netbird login failed."
 fi
 
-# ------------------------------------------------------------------------------
-# 6. Make sure installation went smoothly
-# ------------------------------------------------------------------------------
-
-if ! snap services netbird; then
-  log_error "Snap service check for Netbird failed."
-fi
 
 # ------------------------------------------------------------------------------
 # 7. Start Netbird
